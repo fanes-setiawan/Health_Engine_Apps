@@ -1,0 +1,9 @@
+{
+    "openai_key": "",
+    "modules": [
+        "onboarding",
+        "login",
+        "signup",
+        "home"
+    ]
+}
