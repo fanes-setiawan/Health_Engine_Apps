@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/state_util.dart';
 import '../view/home_view.dart';
@@ -5,6 +6,8 @@ import '../view/home_view.dart';
 class HomeController extends State<HomeView> implements MvcController {
   static late HomeController instance;
   late HomeView view;
+  final CarouselController carouselController = CarouselController();
+  int currentIndex = 0;
 
   @override
   void initState() {

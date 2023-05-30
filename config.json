@@ -4,6 +4,8 @@
         "onboarding",
         "login",
         "signup",
-        "home"
+        "home",
+        "profile",
+        "message"
     ]
 }
