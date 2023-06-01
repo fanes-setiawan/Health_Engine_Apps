@@ -6,6 +6,7 @@
         "signup",
         "home",
         "profile",
-        "message"
+        "message",
+        "editProfile"
     ]
 }

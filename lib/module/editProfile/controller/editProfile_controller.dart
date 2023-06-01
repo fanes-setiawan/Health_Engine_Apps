@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/state_util.dart';
-import '../view/profile_view.dart';
+import '../view/editProfile_view.dart';
 
-class ProfileController extends State<ProfileView> implements MvcController {
-  static late ProfileController instance;
-  late ProfileView view;
-  String? chosenValue;
-
-  dropButtom(var value) {
-    setState(() {
-      chosenValue = value;
-    });
-  }
+class EditProfileController extends State<EditProfileView> implements MvcController {
+  static late EditProfileController instance;
+  late EditProfileView view;
 
   @override
   void initState() {

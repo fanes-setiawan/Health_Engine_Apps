@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
+import 'package:healthengineapps/widget/input/genderRadio.dart';
 import '../../../state_util.dart';
 import '../../../widget/input/bottomC.dart';
 import '../../../widget/input/textform.dart';
@@ -60,31 +61,7 @@ class SignupView extends StatefulWidget {
                   ),
                 ),
               ),
-              LayoutBuilder(builder: (context, constraint) {
-                List<Gender> gender = [Gender.FEMALE, Gender.MALE];
-                return SizedBox(
-                  height: 20,
-                  child: ListView.builder(
-                    itemCount: gender.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      var gen = gender[index];
-                      return Row(
-                        children: [
-                          Radio<Gender>(
-                            value: gen,
-                            groupValue: controller.selectedGender,
-                            onChanged: (value) {
-                              controller.setGender(gen);
-                            },
-                          ),
-                          Text(gen.toString().split('.').last),
-                        ],
-                      );
-                    },
-                  ),
-                );
-              }),
+              GenderRadio(),
               Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: TextField(

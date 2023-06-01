@@ -49,6 +49,15 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     return Padding(
       padding: EdgeInsets.only(top: 20, bottom: 30),
       child: ListTile(
+        trailing: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 20,
+              color: Colors.white,
+            )),
         leading: Image.asset(
           "assets/images/logo.png",
           width: 30.0,
@@ -71,7 +80,7 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
     return AnimatedContainer(
       duration: Duration(seconds: 2),
       width: 60,
-      color: Colors.blue,
+      color: Colors.blue[400],
       child: Column(
         children: [
           controlButton(),
@@ -106,15 +115,6 @@ class _ComplexDrawerState extends State<ComplexDrawer> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget sMenuButton(String subMenu, bool isTitle) {
-    return InkWell(
-      onTap: () {
-        // handle the function
-        // if index==0? donothing: doyourlogic here
-      },
     );
   }
 

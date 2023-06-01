@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
-import 'package:healthengineapps/module/home/widget/complexDrawer.dart';
 import '../controller/home_controller.dart';
 
 class HomeView extends StatefulWidget {
@@ -11,8 +10,16 @@ class HomeView extends StatefulWidget {
     controller.view = this;
 
     return Scaffold(
-      drawer: ComplexDrawer(),
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            controller.conditionScreen();
+          },
+          icon: Icon(
+            Icons.sort,
+            color: Colors.black,
+          ),
+        ),
         actions: const [],
       ),
       body: SingleChildScrollView(
@@ -97,100 +104,95 @@ class HomeView extends StatefulWidget {
                 },
               ),
               SizedBox(height: 25.0),
-              Card(
-                child: LayoutBuilder(
-                  builder: (context, constraint) {
-                    List menus = [
-                      {
-                        "icon": "assets/icons/icons1.png",
-                        "label": "Health Assessment",
-                        "onTap": () {},
-                      },
-                      {
-                        "icon": "assets/icons/icons2.png",
-                        "label": "Symptom Checker",
-                        "onTap": () {},
-                      },
-                      {
-                        "icon": "assets/icons/icons3.png",
-                        "label": "Tracker and Analytics",
-                        "onTap": () {},
-                      },
-                    ];
+              LayoutBuilder(
+                builder: (context, constraint) {
+                  List menus = [
+                    {
+                      "icon": "assets/icons/icons1.png",
+                      "label": "Health Assessment",
+                      "onTap": () {},
+                    },
+                    {
+                      "icon": "assets/icons/icons2.png",
+                      "label": "Symptom Checker",
+                      "onTap": () {},
+                    },
+                    {
+                      "icon": "assets/icons/icons3.png",
+                      "label": "Tracker and Analytics",
+                      "onTap": () {},
+                    },
+                  ];
 
-                    return Wrap(
-                      children: List.generate(
-                        menus.length,
-                        (index) {
-                          var item = menus[index];
+                  return Wrap(
+                    children: List.generate(
+                      menus.length,
+                      (index) {
+                        var item = menus[index];
 
-                          var size = constraint.biggest.width / 3;
+                        var size = constraint.biggest.width / 3.1;
 
-                          return SizedBox(
+                        return Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Container(
                             width: size,
                             height: size,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.blueGrey,
-                                animationDuration:
-                                    const Duration(milliseconds: 1000),
-                                backgroundColor: Colors.transparent,
-                                splashFactory: InkSplash.splashFactory,
-                                shadowColor: Colors.transparent,
-                                elevation: 0.0,
-                              ),
-                              onPressed: () => item["onTap"](),
-                              child: Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                            item["icon"],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 6.0,
-                                    ),
-                                    Text(
-                                      "${item["label"]}",
-                                      textAlign: TextAlign.center,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 11.0,
-                                      ),
-                                    ),
-                                  ],
+                            decoration: BoxDecoration(
+                              color: Colors.blue.shade200,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x19000000),
+                                  blurRadius: 5,
+                                  offset: Offset(3, 5),
                                 ),
-                              ),
+                              ],
                             ),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: ImageIcon(
+                                    AssetImage(
+                                      item['icon'].toString(),
+                                    ),
+                                    size: 50.0,
+                                  ),
+                                ),
+                                Text(
+                                  item['label'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),
         ),
       ),
       floatingActionButton: CircleAvatar(
-        backgroundColor: Colors.blue[100],
+        backgroundColor: Colors.grey[300],
         radius: 30,
         child: IconButton(
           onPressed: () {
             Get.to(MessageView());
           },
-          icon: Icon(
-            Icons.message_outlined,
+          icon: ImageIcon(
+            color: Colors.blue,
+            AssetImage("assets/icons/chat.png"),
+            size: 30.0,
           ),
         ),
       ),

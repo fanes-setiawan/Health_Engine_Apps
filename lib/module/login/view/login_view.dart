@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
+import 'package:healthengineapps/module/home/widget/drawerScreen.dart';
 import 'package:healthengineapps/state_util.dart';
 import 'package:healthengineapps/widget/input/bottomC.dart';
 import '../../../widget/input/textform.dart';
@@ -61,7 +62,7 @@ class LoginView extends StatefulWidget {
                 text: "Login",
                 color: Colors.blue,
                 onPressed: () {
-                  Get.offAll(HomeView());
+                  Get.offAll(DrawerScreen());
                 },
               ),
               Center(
