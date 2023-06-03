@@ -20,27 +20,23 @@ class _ImageButtonState extends State<ImageButton> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          width: 30,
-          height: 30,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                widget.assetImage,
-              ),
-            ),
+        ImageIcon(
+          AssetImage(
+            widget.assetImage,
           ),
+          size: 24.0,
+          color: Colors.teal.shade700,
         ),
         TextButton(
           onPressed: widget.onPressed,
           child: Text(
             widget.title,
             style: TextStyle(
-              color: Colors.grey.shade200,
+              color: Colors.teal.shade700,
               fontSize: 18,
             ),
           ),
-        )
+        ),
       ],
     );
   }

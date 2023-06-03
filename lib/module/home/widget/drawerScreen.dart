@@ -26,7 +26,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
       showShadow: true,
       angle: 0.0,
       drawerShadowsBackgroundColor: Colors.grey.shade300,
-      menuBackgroundColor: Colors.blue.shade300,
+      menuBackgroundColor: Colors.grey.shade100,
       slideWidth: MediaQuery.of(context).size.width * 0.65,
     );
   }

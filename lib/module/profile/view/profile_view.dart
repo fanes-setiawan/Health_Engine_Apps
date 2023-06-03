@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:healthengineapps/core.dart';
 import '../controller/profile_controller.dart';
 
@@ -142,64 +143,69 @@ class ProfileView extends StatefulWidget {
                                 padding: const EdgeInsets.only(
                                     left: 10, right: 10, top: 10),
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    // color: Colors.white,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      // color: Colors.white,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: AnimateList(
+                                        interval: 1000.ms,
+                                        effects: [FadeEffect(duration: 500.ms)],
                                         children: [
-                                          CircleAvatar(
-                                            backgroundColor: item['color'],
-                                            child: Icon(
-                                              item['icon'],
-                                              size: 24.0,
-                                              color: Colors.black,
-                                            ),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                backgroundColor: item['color'],
+                                                child: Icon(
+                                                  item['icon'],
+                                                  size: 24.0,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              SizedBox(width: 15.0),
+                                              Text(
+                                                item['label'],
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 15.0,
+                                                ),
+                                              )
+                                            ],
                                           ),
-                                          SizedBox(width: 15.0),
-                                          Text(
-                                            item['label'],
-                                            style: TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 15.0,
-                                            ),
-                                          )
+                                          item['label'] != "Riwayat Penyakit"
+                                              ? Text(
+                                                  item['date'] ?? '',
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                                )
+                                              : DropdownButtonHideUnderline(
+                                                  child: DropdownButton<String>(
+                                                    elevation: 0,
+                                                    value:
+                                                        controller.chosenValue,
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                    items: riwayat.map((value) {
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value),
+                                                      );
+                                                    }).toList(),
+                                                    onChanged: (value) {
+                                                      controller
+                                                          .dropButtom(value);
+                                                    },
+                                                  ),
+                                                )
                                         ],
                                       ),
-                                      item['label'] != "Riwayat Penyakit"
-                                          ? Text(
-                                              item['date'] ?? '',
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                            )
-                                          : DropdownButtonHideUnderline(
-                                              child: DropdownButton<String>(
-                                                elevation: 0,
-                                                value: controller.chosenValue,
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                                items: riwayat.map((value) {
-                                                  return DropdownMenuItem(
-                                                    value: value,
-                                                    child: Text(value),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (value) {
-                                                  controller.dropButtom(value);
-                                                },
-                                              ),
-                                            )
-                                    ],
-                                  ),
-                                ),
+                                    )),
                               );
                             },
                           ),

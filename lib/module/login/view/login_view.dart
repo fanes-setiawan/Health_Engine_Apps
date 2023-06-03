@@ -3,6 +3,7 @@ import 'package:healthengineapps/core.dart';
 import 'package:healthengineapps/module/home/widget/drawerScreen.dart';
 import 'package:healthengineapps/state_util.dart';
 import 'package:healthengineapps/widget/input/bottomC.dart';
+import '../../../model/colors/customColors.dart';
 import '../../../widget/input/textform.dart';
 import '../controller/login_controller.dart';
 
@@ -14,11 +15,12 @@ class LoginView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         actions: const [],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -26,11 +28,11 @@ class LoginView extends StatefulWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 30,
-                    height: 30,
+                    width: 35,
+                    height: 35,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/logo.png'),
+                        image: AssetImage('assets/icons/logo.png'),
                       ),
                     ),
                   ),
@@ -38,7 +40,7 @@ class LoginView extends StatefulWidget {
                   Text(
                     "Login",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: CustomColor.darkgreen,
                       fontSize: 23.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -60,7 +62,7 @@ class LoginView extends StatefulWidget {
               SizedBox(height: 10.0),
               BottomC(
                 text: "Login",
-                color: Colors.blue,
+                color: CustomColor.darkgreen,
                 onPressed: () {
                   Get.offAll(DrawerScreen());
                 },
@@ -81,7 +83,7 @@ class LoginView extends StatefulWidget {
                         TextSpan(
                           text: "Sign Up",
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: CustomColor.darkgreen,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
+import 'package:healthengineapps/model/colors/customColors.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import '../../../state_util.dart';
 import '../controller/onboarding_controller.dart';
@@ -48,13 +49,14 @@ class OnboardingView extends StatefulWidget {
       showNextButton: true,
       showDoneButton: true,
       showBackButton: false,
-      back: Icon(Icons.arrow_back),
-      skip: Text("Skip"),
-      next: const Icon(Icons.arrow_forward),
-      done: Text("Done"),
+      back: Icon(Icons.arrow_back, color: CustomColor.darkgreen),
+      skip: Text("Skip", style: TextStyle(color: CustomColor.darkgreen)),
+      next: Icon(Icons.arrow_forward, color: CustomColor.darkgreen),
+      done: Text("Done", style: TextStyle(color: CustomColor.darkgreen)),
       dotsDecorator: DotsDecorator(
           size: Size(10, 10),
           color: Colors.grey,
+          activeColor: CustomColor.darkgreen,
           activeSize: Size(20, 10),
           activeShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),

@@ -201,7 +201,7 @@ class _QImagePickerState extends State<QImagePicker> {
                   width: 30,
                   height: 30,
                   decoration: BoxDecoration(
-                    color: loading ? Colors.grey : Colors.blue,
+                    color: loading ? Colors.grey : Colors.teal.shade700,
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Center(

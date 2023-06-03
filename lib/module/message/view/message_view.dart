@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
+import '../../../model/colors/customColors.dart';
 import '../controller/message_controller.dart';
 
 class MessageView extends StatefulWidget {
@@ -105,7 +106,7 @@ class MessageView extends StatefulWidget {
                 IconButton(
                   icon: Icon(
                     Icons.send,
-                    color: Colors.blue,
+                    color: CustomColor.darkgreen,
                   ),
                   onPressed: controller.sendMessage,
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
 import 'package:healthengineapps/widget/input/genderRadio.dart';
+import '../../../model/colors/customColors.dart';
 import '../../../state_util.dart';
 import '../../../widget/input/bottomC.dart';
 import '../../../widget/input/textform.dart';
@@ -14,11 +15,12 @@ class SignupView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
-        actions: const [],
+        forceMaterialTransparency: true,
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -26,11 +28,11 @@ class SignupView extends StatefulWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 30,
-                    height: 30,
+                    width: 35,
+                    height: 35,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/logo.png'),
+                        image: AssetImage('assets/icons/logo.png'),
                       ),
                     ),
                   ),
@@ -38,7 +40,7 @@ class SignupView extends StatefulWidget {
                   Text(
                     "Sign Up",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: CustomColor.darkgreen,
                       fontSize: 23.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -90,7 +92,7 @@ class SignupView extends StatefulWidget {
               SizedBox(height: 10.0),
               BottomC(
                 text: "Sign Up",
-                color: Colors.blue,
+                color: CustomColor.darkgreen,
                 onPressed: () {},
               ),
               Center(
@@ -109,7 +111,7 @@ class SignupView extends StatefulWidget {
                         TextSpan(
                           text: "Login",
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: CustomColor.darkgreen,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:healthengineapps/core.dart';
+import '../../../model/colors/customColors.dart';
 import '../controller/home_controller.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,7 +19,7 @@ class HomeView extends StatefulWidget {
           },
           icon: Icon(
             Icons.sort,
-            color: Colors.black,
+            color: CustomColor.darkgreen,
           ),
         ),
         actions: const [],
@@ -89,7 +91,7 @@ class HomeView extends StatefulWidget {
                                 color: (Theme.of(context).brightness ==
                                             Brightness.dark
                                         ? Colors.white
-                                        : Colors.black)
+                                        : CustomColor.darkgreen)
                                     .withOpacity(
                                         controller.currentIndex == entry.key
                                             ? 0.9
@@ -109,17 +111,17 @@ class HomeView extends StatefulWidget {
                   List menus = [
                     {
                       "icon": "assets/icons/icons1.png",
-                      "label": "Health Assessment",
+                      "label": "Assessment",
                       "onTap": () {},
                     },
                     {
                       "icon": "assets/icons/icons2.png",
-                      "label": "Symptom Checker",
+                      "label": "Symptom",
                       "onTap": () {},
                     },
                     {
                       "icon": "assets/icons/icons3.png",
-                      "label": "Tracker and Analytics",
+                      "label": "Tracker",
                       "onTap": () {},
                     },
                   ];
@@ -138,7 +140,7 @@ class HomeView extends StatefulWidget {
                             width: size,
                             height: size,
                             decoration: BoxDecoration(
-                              color: Colors.blue.shade200,
+                              color: CustomColor.darkgreen,
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
@@ -158,6 +160,7 @@ class HomeView extends StatefulWidget {
                                       item['icon'].toString(),
                                     ),
                                     size: 50.0,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Text(
@@ -190,11 +193,13 @@ class HomeView extends StatefulWidget {
             Get.to(MessageView());
           },
           icon: ImageIcon(
-            color: Colors.blue,
+            color: CustomColor.darkgreen,
             AssetImage("assets/icons/chat.png"),
             size: 30.0,
           ),
-        ),
+        )
+            .animate(onPlay: (controller) => controller.repeat())
+            .shake(duration: Duration(milliseconds: 500)),
       ),
     );
   }

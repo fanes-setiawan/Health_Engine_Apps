@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:healthengineapps/core.dart';
 import 'package:healthengineapps/widget/input/imageButton.dart';
@@ -16,10 +17,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade300,
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.blue.shade300,
+        backgroundColor: Colors.grey.shade100,
         leading: IconButton(
           onPressed: () {
             if (ZoomDrawer.of(context)!.isOpen()) {
@@ -30,37 +31,33 @@ class _MainScreenState extends State<MainScreen> {
           },
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
-            color: Colors.white,
+            color: Colors.teal.shade700,
           ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+            children: AnimateList(
+          interval: 1000.ms,
+          effects: [FadeEffect(duration: 1000.ms)],
           children: [
             Row(
               children: [
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 150,
+                  height: 70,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
+                    // color: Colors.amber,
+                    // borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
                       image: AssetImage(
-                        "assets/images/logo.png",
+                        "assets/icons/health-engine-icon-transparent.png",
                       ),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                Text(
-                  "Apps",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                )
               ],
             ),
             SizedBox(height: 30),
@@ -68,8 +65,6 @@ class _MainScreenState extends State<MainScreen> {
               title: "My Profil",
               assetImage: "assets/icons/user.png",
               onPressed: () {
-                duration:
-                const Duration(seconds: 10000);
                 Get.to(ProfileView());
               },
             ),
@@ -80,7 +75,7 @@ class _MainScreenState extends State<MainScreen> {
               onPressed: () {},
             )
           ],
-        ),
+        )),
       ),
     );
   }

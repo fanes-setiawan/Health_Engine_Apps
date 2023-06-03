@@ -25,6 +25,7 @@ class _TextFormState extends State<TextForm> {
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.only(),
       child: TextFormField(
+        cursorColor: Colors.black,
         initialValue: widget.initial,
         decoration: InputDecoration(
           labelText: widget.label,

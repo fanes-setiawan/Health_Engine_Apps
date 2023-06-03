@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../model/colors/customColors.dart';
+
 class GenderRadio extends StatefulWidget {
   @override
   State<GenderRadio> createState() => _GenderRadioState();
@@ -29,6 +31,7 @@ class _GenderRadioState extends State<GenderRadio> {
             return Row(
               children: [
                 Radio<Gender>(
+                  activeColor: CustomColor.darkgreen,
                   value: gen,
                   groupValue: selectedGender,
                   onChanged: (value) {
