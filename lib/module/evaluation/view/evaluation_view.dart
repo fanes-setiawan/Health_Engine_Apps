@@ -12,7 +12,7 @@ class EvaluationView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false
         centerTitle: true,
         titleTextStyle: TextStyle(
           color: CustomColor.darkgreen,
@@ -152,29 +152,48 @@ class EvaluationView extends StatefulWidget {
                 );
               }),
               SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Nama Dokter",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Nama Dokter",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Tanggal Periksa",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Tanggal Periksa",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
               SizedBox(height: 10),
               Builder(
@@ -188,19 +207,10 @@ class EvaluationView extends StatefulWidget {
                     {"doctor": "Dr. Olivia Wilson", "date": "15 Juni 2023"},
                     {"doctor": "Dr. Daniel Thomas", "date": "10 Juli 2023"},
                     {"doctor": "Dr. Sarah Garcia", "date": "25 Agustus 2023"},
-                    {
-                      "doctor": "Dr. Christopher Martinez",
-                      "date": "20 September 2023"
-                    },
-                    {
-                      "doctor": "Dr. Elizabeth Clark",
-                      "date": "15 Oktober 2023"
-                    },
-                    {
-                      "doctor": "Dr. Matthew Hernandez",
-                      "date": "10 November 2023"
-                    },
-                    {"doctor": "Dr. Jennifer Davis", "date": "5 Desember 2023"},
+                    {"doctor": "Dr. Christopher", "date": "20 September 2023"},
+                    {"doctor": "Dr. Elizabeth ", "date": "15 Oktober 2023"},
+                    {"doctor": "Dr. Matthew ", "date": "10 November 2023"},
+                    {"doctor": "Dr. Jennifer ", "date": "5 Desember 2023"},
                     {"doctor": "Dr. James Turner", "date": "1 Januari 2024"},
                     {"doctor": "Dr. Karen Lewis", "date": "15 Februari 2024"},
                     {"doctor": "Dr. Timothy White", "date": "10 Maret 2024"},
@@ -210,43 +220,49 @@ class EvaluationView extends StatefulWidget {
                     {"doctor": "Dr. Steven Young", "date": "10 Juli 2024"},
                     {"doctor": "Dr. Pamela Martin", "date": "25 Agustus 2024"},
                   ];
-                  return ListView.builder(
-                    itemCount: category.length,
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    clipBehavior: Clip.none,
-                    itemBuilder: (context, index) {
-                      var item = category[index];
-                      return Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                child: Text(
-                                  "${item['doctor']}",
-                                  style: TextStyle(
-                                    color: Colors.blueGrey,
-                                    fontSize: 13,
+                  return SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: category.map((item) {
+                        return Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  child: Text(
+                                    "${item['doctor']}",
+                                    style: TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                child: Text(
-                                  "${item['date']}",
-                                  style: TextStyle(
-                                    color: Colors.blueGrey,
-                                    fontSize: 13,
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  child: Text(
+                                    "${item['date']}",
+                                    style: TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   );
                 },
               ),
