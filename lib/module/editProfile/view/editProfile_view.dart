@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
-import 'package:healthengineapps/widget/input/textform.dart';
 import '../../../widget/input/qImagePicker.dart';
 import '../controller/editProfile_controller.dart';
 
@@ -54,16 +53,16 @@ class EditProfileView extends StatefulWidget {
                     ),
                   ],
                 ),
-                TextForm(
-                  label: "Alamat",
-                  initial: "",
-                  helper: "enter your alamat",
-                ),
-                TextForm(
-                  label: "Golongan Darah",
-                  initial: "",
-                  helper: "enter your golongan darah",
-                ),
+                // TextForm(
+                //   label: "Alamat",
+                //   initial: "",
+                //   helper: "enter your alamat",
+                // ),
+                // TextForm(
+                //   label: "Golongan Darah",
+                //   initial: "",
+                //   helper: "enter your golongan darah",
+                // ),
               ],
             ),
           ),

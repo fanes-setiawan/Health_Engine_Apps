@@ -50,12 +50,14 @@ class ProfileView extends StatefulWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Fanes Setiawan",
+                            "${controller.profileData['name']}",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 19,
                               fontWeight: FontWeight.bold,
                             ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           Row(
                             children: [
@@ -108,14 +110,14 @@ class ProfileView extends StatefulWidget {
                             "icon": Icons.calendar_month_sharp,
                             "label": "Tanggal Lahir",
                             "color": Colors.green[100],
-                            "date": "14/01/2003",
+                            "date": "${controller.profileData['birth_of_day']}",
                             "onTap": () {},
                           },
                           {
                             "icon": Icons.boy_rounded,
                             "label": "Jenis Kelamin",
                             "color": Colors.blue[100],
-                            "date": "L",
+                            "date": "${controller.profileData['gender']}",
                             "onTap": () {},
                           },
                           {

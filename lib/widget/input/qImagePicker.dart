@@ -93,7 +93,7 @@ class _QImagePickerState extends State<QImagePicker> {
   Future<String> uploadToCloudinary(String filePath) async {
     String cloudName = "dlkwckjvt";
     String apiKey = "581349388592411";
-    String apiSecret = "b2ogwmbNvOG6CF3FrQlFOJDvbH4";
+    // String apiSecret = "b2ogwmbNvOG6CF3FrQlFOJDvbH4";
 
     final formData = FormData.fromMap({
       'file': MultipartFile.fromBytes(

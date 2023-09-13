@@ -31,7 +31,7 @@ class MessageView extends StatefulWidget {
                       child: Container(
                         constraints: BoxConstraints(
                             maxWidth: MediaQuery.of(context).size.width * 0.8),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.blueGrey,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:healthengineapps/state_util.dart';
 import '../view/onboarding_view.dart';
 
-class OnboardingController extends State<OnboardingView> implements MvcController {
+class OnboardingController extends State<OnboardingView>
+    implements MvcController {
   static late OnboardingController instance;
   late OnboardingView view;
 

@@ -45,11 +45,11 @@ class _MainScreenState extends State<MainScreen> {
             Row(
               children: [
                 Container(
-                  width: 150,
-                  height: 70,
+                  width: 130,
+                  height: 50,
                   decoration: BoxDecoration(
-                    // color: Colors.amber,
-                    // borderRadius: BorderRadius.circular(50),
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
                       image: AssetImage(
                         "assets/icons/health-engine-icon-transparent.png",
@@ -72,7 +72,9 @@ class _MainScreenState extends State<MainScreen> {
             ImageButton(
               title: "Logout",
               assetImage: "assets/icons/exit.png",
-              onPressed: () {},
+              onPressed: () {
+                Get.offAll(LoginView());
+              },
             )
           ],
         )),

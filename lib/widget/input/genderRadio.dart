@@ -1,51 +1,31 @@
 import 'package:flutter/material.dart';
 
-import '../../model/colors/customColors.dart';
+class GenderRadio extends StatelessWidget {
+  final String genderTitle;
+  final void Function(int) onChanged;
+  final int value;
+  final int groupValue;
 
-class GenderRadio extends StatefulWidget {
-  @override
-  State<GenderRadio> createState() => _GenderRadioState();
-}
-
-class _GenderRadioState extends State<GenderRadio> {
-  Gender _selectedGender = Gender.FEMALE;
-  Gender get selectedGender => _selectedGender;
+  GenderRadio({
+    required this.genderTitle,
+    required this.onChanged,
+    required this.value,
+    required this.groupValue,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraint) {
-      List<Gender> gender = [Gender.FEMALE, Gender.MALE];
-
-      setGender(Gender gender) {
-        _selectedGender = gender;
-        setState(() {});
-      }
-
-      return SizedBox(
-        height: 20,
-        child: ListView.builder(
-          itemCount: gender.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            var gen = gender[index];
-            return Row(
-              children: [
-                Radio<Gender>(
-                  activeColor: CustomColor.darkgreen,
-                  value: gen,
-                  groupValue: selectedGender,
-                  onChanged: (value) {
-                    setGender(gen);
-                  },
-                ),
-                Text(gen.toString().split('.').last),
-              ],
-            );
+    return Row(
+      children: [
+        Radio(
+          value: value,
+          groupValue: groupValue,
+          onChanged: (newValue) {
+            onChanged(newValue as int);
           },
         ),
-      );
-    });
+        Text(genderTitle),
+      ],
+    );
   }
 }
-
-enum Gender { MALE, FEMALE, OTHER }

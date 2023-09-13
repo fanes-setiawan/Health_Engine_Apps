@@ -29,17 +29,19 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
-  cupertino_icons: ^1.0.2
-  dio: ^5.1.2
+  cupertino_icons: ^1.0.6
+  dio: ^5.0.1
   file_picker: ^5.3.2
   flutter:
     sdk: flutter
   flutter_animate: ^4.1.1+1
   flutter_svg: ^2.0.7
-  flutter_zoom_drawer: ^3.0.3
+  flutter_zoom_drawer: ^3.1.1
   image_picker: ^0.8.7+5
   intl: ^0.18.1
   introduction_screen: ^3.1.8
+  percent_indicator: ^4.2.3
+  sqflite: ^2.3.0
   syncfusion_flutter_charts: ^22.2.5
 
 dev_dependencies:

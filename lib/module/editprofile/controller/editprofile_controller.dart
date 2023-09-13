@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:healthengineapps/state_util.dart';
-import '../view/editProfile_view.dart';
+import 'package:healthengineapps/core.dart';
+import '../view/editprofile_view.dart';
 
-class EditProfileController extends State<EditProfileView>
-    implements MvcController {
-  static late EditProfileController instance;
-  late EditProfileView view;
+class EditprofileController extends State<EditprofileView> {
+  static late EditprofileController instance;
+  late EditprofileView view;
 
   @override
   void initState() {

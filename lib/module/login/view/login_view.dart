@@ -1,11 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
-import 'package:healthengineapps/module/home/widget/drawerScreen.dart';
-import 'package:healthengineapps/state_util.dart';
-import 'package:healthengineapps/widget/input/bottomC.dart';
-import '../../../model/colors/customColors.dart';
-import '../../../widget/input/textform.dart';
-import '../controller/login_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -30,14 +25,14 @@ class LoginView extends StatefulWidget {
                   Container(
                     width: 35,
                     height: 35,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/icons/logo.png'),
                       ),
                     ),
                   ),
-                  SizedBox(width: 5),
-                  Text(
+                  const SizedBox(width: 5),
+                  const Text(
                     "Login",
                     style: TextStyle(
                       color: CustomColor.darkgreen,
@@ -47,34 +42,44 @@ class LoginView extends StatefulWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               TextForm(
                 label: 'Email',
-                initial: 'akun@gmail.com',
+                obscureText: false,
                 helper: 'Enter your email address',
+                onChanged: (value) {
+                  controller.email = value;
+                },
               ),
               TextForm(
                 label: 'Password',
-                initial: "******",
                 helper: 'Enter your password',
-                suffix: Icon(Icons.visibility_off),
-              ),
-              SizedBox(height: 10.0),
-              BottomC(
-                text: "Login",
-                color: CustomColor.darkgreen,
-                onPressed: () {
-                  Get.offAll(DrawerScreen());
+                obscureText: controller.obcureState,
+                suffix: IconButton(
+                  onPressed: () => controller.visibility(),
+                  icon: Icon(
+                    controller.obcureState
+                        ? CupertinoIcons.eye
+                        : CupertinoIcons.eye_slash,
+                  ),
+                ),
+                onChanged: (value) {
+                  controller.password = value;
                 },
               ),
+              const SizedBox(height: 10.0),
+              BottomC(
+                  text: "Login",
+                  color: CustomColor.darkgreen,
+                  onPressed: () => controller.doLogin()),
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Get.to(SignupView());
+                    Get.to(const SignupView());
                   },
                   child: RichText(
-                    text: TextSpan(
-                      text: "Dont't hame account? ",
+                    text: const TextSpan(
+                      text: "Don't have account? ",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16.0,

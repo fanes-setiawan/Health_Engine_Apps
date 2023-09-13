@@ -1,11 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthengineapps/core.dart';
-import 'package:healthengineapps/widget/input/genderRadio.dart';
-import '../../../model/colors/customColors.dart';
-import '../../../state_util.dart';
-import '../../../widget/input/bottomC.dart';
-import '../../../widget/input/textform.dart';
-import '../controller/signup_controller.dart';
+
+import '../../../widget/input/genderRadio.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({Key? key}) : super(key: key);
@@ -30,14 +27,14 @@ class SignupView extends StatefulWidget {
                   Container(
                     width: 35,
                     height: 35,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/icons/logo.png'),
                       ),
                     ),
                   ),
-                  SizedBox(width: 5),
-                  Text(
+                  const SizedBox(width: 5),
+                  const Text(
                     "Sign Up",
                     style: TextStyle(
                       color: CustomColor.darkgreen,
@@ -47,14 +44,18 @@ class SignupView extends StatefulWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               TextForm(
                 label: 'Name',
                 initial: '',
+                obscureText: false,
                 helper: 'Enter your name',
+                onChanged: (value) {
+                  controller.name = value;
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
+              const Padding(
+                padding: EdgeInsets.all(5.0),
                 child: Text(
                   "Gender",
                   style: TextStyle(
@@ -63,12 +64,27 @@ class SignupView extends StatefulWidget {
                   ),
                 ),
               ),
-              GenderRadio(),
+              Row(
+                children: [
+                  GenderRadio(
+                    genderTitle: 'Male',
+                    onChanged: controller.handleGenderChange,
+                    value: 1, // Set nilai yang sesuai untuk male
+                    groupValue: controller.selectedGender,
+                  ),
+                  GenderRadio(
+                    genderTitle: 'Female',
+                    onChanged: controller.handleGenderChange,
+                    value: 2, // Set nilai yang sesuai untuk female
+                    groupValue: controller.selectedGender,
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: TextField(
                   controller: controller.dateinput,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     icon: Icon(Icons.calendar_today),
                     label: Text("enter date of birth"),
                   ),
@@ -80,28 +96,43 @@ class SignupView extends StatefulWidget {
               ),
               TextForm(
                 label: 'Email',
-                initial: 'akun@gmail.com',
                 helper: 'Enter your email address',
+                obscureText: false,
+                onChanged: (value) {
+                  controller.email = value;
+                },
               ),
               TextForm(
                 label: 'Password',
-                initial: "******",
                 helper: 'Enter your password',
-                suffix: Icon(Icons.visibility_off),
+                obscureText: controller.obcureState,
+                suffix: IconButton(
+                  onPressed: () => controller.visibility(),
+                  icon: Icon(
+                    controller.obcureState
+                        ? CupertinoIcons.eye
+                        : CupertinoIcons.eye_slash,
+                  ),
+                ),
+                onChanged: (value) {
+                  controller.password = value;
+                },
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               BottomC(
                 text: "Sign Up",
                 color: CustomColor.darkgreen,
-                onPressed: () {},
+                onPressed: () {
+                  controller.doRegister();
+                },
               ),
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Get.to(LoginView());
+                    Get.to(const LoginView());
                   },
                   child: RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: "Already have an account? ",
                       style: TextStyle(
                         color: Colors.black,

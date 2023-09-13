@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:healthengineapps/state_util.dart';
+import '../../../state_util.dart';
 import '../view/home_view.dart';
 
 class HomeController extends State<HomeView> implements MvcController {
